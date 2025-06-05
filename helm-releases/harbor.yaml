@@ -1,0 +1,46 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: harbor
+  namespace: harbor # Or your desired namespace for Harbor
+spec:
+  interval: 5m # How often to reconcile the Helm release
+  chart:
+    spec:
+      chart: harbor
+      version: "1.13.0" # Specify the desired chart version (check official Harbor chart releases)
+      sourceRef:
+        kind: HelmRepository
+        name: harbor
+        namespace: flux-system # Must match the namespace of your HelmRepository resource
+  # values: # This is where you configure Harbor
+  #   expose:
+  #     type: ingress # Or nodeport, etc.
+  #     ingress:
+  #       core:
+  #         host: harbor.example.com # Replace with your actual domain
+  #         annotations:
+  #           kubernetes.io/ingress.class: nginx # Or your ingress controller class
+  #       # Add more ingress settings for notary, registry, etc. if needed
+  #   externalURL: https://harbor.example.com # Must match your ingress host
+  #   harborAdminPassword: your-secure-admin-password # CHANGE THIS! Use sealed secrets or external secret management in production
+  #   # Persistence settings (CRITICAL for production)
+  #   persistence:
+  #     enabled: true
+  #     resourcePolicy: keep
+  #     # Configure storage class and size for various components:
+  #     imageChartStorage:
+  #       type: pvc
+  #       size: 500Gi # Adjust size as needed
+  #       # storageClass: standard # Your default storage class or a specific one
+  #     # Add settings for other persistent volumes like database, Redis, etc.
+  #   # Database configuration (external database recommended for production)
+  #   database:
+  #     type: internal # Or external
+  #     # If external, provide connection details
+  #   # Redis configuration (external Redis recommended for production)
+  #   redis:
+  #     type: internal # Or external
+  #     # If external, provide connection details
+  #   # ... many more configuration options ...
