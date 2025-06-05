@@ -1,0 +1,7 @@
+# This file goes into your Git repository that Flux monitors
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+resources:
+  - helm-repositories/harbor-repo.yaml
+  - helm-releases/harbor.yaml
+  # Add other resources here if you have them, e.g., namespaces, network policies
