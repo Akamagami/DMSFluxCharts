@@ -23,7 +23,7 @@ spec:
       strategy: rollback
   valuesFrom:
     - kind: ConfigMap # Or Secret, if you want to store sensitive values like passwords
-      name: harbor-values-configmap # This ConfigMap will hold your `values.yaml` content
+      name: harbor-values # This ConfigMap will hold your `values.yaml` content
   # Or directly include values for a simple setup (less flexible for large configs):
   # values:
   #   expose:
