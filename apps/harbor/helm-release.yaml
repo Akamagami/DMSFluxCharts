@@ -31,4 +31,6 @@ spec:
   dependsOn:
     - name: cert-manager
       namespace: cert-manager
+    - name: harbor-cert
+      namespace: harbor
 
