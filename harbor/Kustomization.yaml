@@ -2,7 +2,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 resources:
-  - ../helm-repositories/harbor-repo.yaml
+  - harbor-repo.yaml
   - helm-releases
   - harbor-namespace.yaml
   - harbor-values-configmap.yaml
