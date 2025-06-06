@@ -1,9 +1,8 @@
----
 apiVersion: source.toolkit.fluxcd.io/v1beta2
 kind: HelmRepository
 metadata:
   name: harbor
-  namespace: flux-system # Or the namespace where your Flux controllers are running in the shoot
+  namespace: flux-system # Or the namespace where your HelmRepositories are managed
 spec:
-  interval: 1h # How often to check for updates to the Helm repository index
-  url: https://helm.goharbor.io # Official Harbor Helm chart repository
+  interval: 1m0s
+  url: https://helm.goharbor.io

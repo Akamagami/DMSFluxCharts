@@ -4,4 +4,6 @@ kind: Kustomization
 resources:
   - helm-repositories/harbor-repo.yaml
   - helm-releases/harbor.yaml
+  - harbor/harbor-namespace.yaml
+  - harbor/harbor-values-configmap.yaml
   # Add other resources here if you have them, e.g., namespaces, network policies
