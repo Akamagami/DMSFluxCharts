@@ -5,7 +5,7 @@ metadata:
   namespace: harbor
 resources:
   - namespace.yaml
+  - harbor-certificate.yaml
   - harbor-helm-repository.yaml
+  - harbor-values-configmap.yaml
   - helm-release.yaml
-  - harbor-values-configmap.yaml # If you use it
-  - harbor-certificate.yaml # <-- Ensure this line is present

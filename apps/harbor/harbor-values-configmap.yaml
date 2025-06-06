@@ -4,18 +4,22 @@ metadata:
   name: harbor-values
   namespace: harbor
 data:
-  # Content of your values.yaml goes here, indented
   values.yaml: |
     expose:
-      type: ClusterIP 
+      type: ClusterIP
       tls:
         enabled: true
         certSource: secret
-        secretName: harbor-cert 
+        secretName: harbor-cert
       ingress:
-        enabled: true # 
+        enabled: true
         hosts:
-          core: flux.local.external.local.gardener.cloud 
-    externalURL: https://harbor.dms.com
+          core: flux.local.external.local.gardener.cloud
+    externalURL: https://harbor.dms.com 
     existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
     harborAdminPassword: "dms"
+    nginx:
+      enabled: true 
+      tls:
+        enabled: true
+        secretName: harbor-cert 
