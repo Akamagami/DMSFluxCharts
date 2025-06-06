@@ -9,8 +9,6 @@ data:
       type: ClusterIP
       tls:
         enabled: true
-        certSource: secret
-        secretName: harbor-cert
       ingress:
         enabled: true
         hosts:
