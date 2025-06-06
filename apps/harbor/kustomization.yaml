@@ -4,6 +4,7 @@ metadata:
   name: harbor-apps
   namespace: harbor
 resources:
+  - namespace.yaml
   - helm-release.yaml
   - harbor-values-configmap.yaml # If you use it
   - harbor-certificate.yaml # <-- Ensure this line is present
