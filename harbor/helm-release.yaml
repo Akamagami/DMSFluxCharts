@@ -17,6 +17,7 @@ spec:
   install:
     remediation:
       remediateLastFailure: true
+    timeout: 10m
   upgrade:
     remediation:
       remediateLastFailure: true
