@@ -1,0 +1,18 @@
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: harbor-cert # Name of the Certificate resource
+  namespace: harbor # Must be in the same namespace as Harbor
+spec:
+  secretName: harbor-cert # This is the name of the Kubernetes Secret cert-manager will create
+  duration: 2160h # 90d
+  renewBefore: 360h # 15d
+  subject:
+    organizations:
+      - Harbor
+  dnsNames:
+    - flux.local.external.local.gardener.cloud # IMPORTANT: Replace with your exact Shoot cluster domain
+  issuerRef:
+    name: selfsigned-issuer
+    kind: ClusterIssuer
+    group: cert-manager.io
