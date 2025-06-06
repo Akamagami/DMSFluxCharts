@@ -21,5 +21,4 @@ data:
     nginx:
       enabled: true 
       tls:
-        enabled: true
-        secretName: harbor-cert 
+        enabled: false
