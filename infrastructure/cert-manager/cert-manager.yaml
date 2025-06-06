@@ -49,7 +49,3 @@ spec:
       requests:
         cpu: 100m
         memory: 128Mi
-  # NEW: Add a dependency on the CRDs Kustomization
-  dependsOn:
-    - name: cert-manager-crds # This refers to the Kustomization for CRDs
-      namespace: flux-system # Assuming the root Kustomization in flux-system reconciles the infra/cert-manager Kustomization
