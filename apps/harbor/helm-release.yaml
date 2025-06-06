@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: "1.16.x" # Your desired Harbor version
+      version: "1.17.x" # Your desired Harbor version
       sourceRef:
         kind: HelmRepository
         name: harbor
@@ -30,12 +30,4 @@ spec:
   # IMPORTANT: Dependency on cert-manager HelmRelease
   dependsOn:
     - name: cert-manager
-      namespace: cert-manager
-  values:
-    # ... other Harbor values ...
-    expose:
-      tls:
-        enabled: true
-        certSource: secret
-        secretName: harbor-cert # <--- This MUST match the secretName in apps/harbor/harbor-certificate.yaml
-    # ... rest of your values ...
+
