@@ -8,7 +8,9 @@ data:
     expose:
       type: ClusterIP
       tls:
-        enabled: true
+        enabled: true 
+        auto:
+          commonName: "harbor.local"
       ingress:
         enabled: true
         hosts:
