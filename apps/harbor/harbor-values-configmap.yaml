@@ -7,19 +7,15 @@ data:
   # Content of your values.yaml goes here, indented
   values.yaml: |
     expose:
-      type: loadBalancer
+      type: ClusterIP 
       tls:
         enabled: true
         certSource: secret
-        auto:
-          commonName: ""
-        secret:
-          secretName: "harbor-cert"
-          notarySecretName: "harbor-cert"
+        secretName: harbor-cert 
       ingress:
+        enabled: true # Enable Ingress
         hosts:
-          core: harbor.mydomain.com
-          notary: harbor.mydomain.com
-    externalURL: https://harbor.mydomain.com
+          core: flux.local.external.local.gardener.cloud 
+    externalURL: https://harbor.dms.com
     existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
     harborAdminPassword: "dms"
