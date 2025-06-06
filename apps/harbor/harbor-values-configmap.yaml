@@ -8,9 +8,14 @@ data:
     expose:
       type: ClusterIP
       tls:
-        enabled: true 
-        auto:
-          commonName: "harbor.local"
+        enabled: true         
+          certSource: secret    
+          secretName: harbor-cert
+          auto:                
+            commonName: flux.local.external.local.gardener.cloud 
+            issuerRef:
+              name: selfsigned-issuer 
+              kind: ClusterIssuer
       ingress:
         enabled: true
         hosts:
