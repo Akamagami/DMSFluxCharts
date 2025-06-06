@@ -13,7 +13,7 @@ data:
         certSource: secret
         secretName: harbor-cert 
       ingress:
-        enabled: true # Enable Ingress
+        enabled: true # 
         hosts:
           core: flux.local.external.local.gardener.cloud 
     externalURL: https://harbor.dms.com
