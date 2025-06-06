@@ -26,7 +26,7 @@ spec:
     timeout: 10m # Ensure this is increased
   valuesFrom:
     - kind: ConfigMap
-      name: harbor-values-configmap
+      name: harbor-values
   # IMPORTANT: Dependency on cert-manager HelmRelease
   dependsOn:
     - name: cert-manager
