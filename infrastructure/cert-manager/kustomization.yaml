@@ -5,6 +5,5 @@ metadata:
   namespace: cert-manager
 resources:
   - ./crds # IMPORTANT: Apply CRDs Kustomization first!
-  - cert-manager-helm-repository.yaml
-  - cert-manager-helm-release.yaml
+  - cert-manager.yaml
   - cert-manager-issuer.yaml
