@@ -1,9 +1,12 @@
-# This file goes into your Git repository that Flux monitors
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
+metadata:
+  name: harbor-kustomization # <--- THIS IS THE MISSING FIELD! Give it a unique, descriptive name
+  namespace: flux-system    # <--- Or the namespace where you manage your Flux Kustomizations
+# Add your resources, patches, etc. here
 resources:
-  - ../helm-repositories/harbor-repo.yaml
-  - helm-releases
-  - harbor-namespace.yaml
-  - harbor-values-configmap.yaml
-  # Add other resources here if you have them, e.g., namespaces, network policies
+  - ../harbor/harbor-helm-repository.yaml # Assuming this is the path
+  - ../harbor/helm-release.yaml           # Assuming this is the path
+  - ../harbor/harbor-values-configmap.yaml # Assuming this is the path
+  - ../harbor/namespace.yaml              # Assuming this is the path
+# ... other resources you want to include in this Kustomization
