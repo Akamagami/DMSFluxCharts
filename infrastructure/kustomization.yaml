@@ -5,5 +5,5 @@ metadata:
   namespace: infrastructure
 resources:
   # IMPORTANT: Ensure cert-manager resources are listed before apps that depend on them
-  - ../infrastructure/cert-manager
-  - ../infrastructure/ingress
+  - ./cert-manager
+  - ./ingress
