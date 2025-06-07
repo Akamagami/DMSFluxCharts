@@ -6,24 +6,52 @@ metadata:
 data:
   values.yaml: |
     expose:
-      type: ClusterIP
+      type: ingress
       tls:
         enabled: true
         certSource: secret
-        secretName: harbor-cert
-        auto:
-          commonName: flux.local.external.local.gardener.cloud
-          issuerRef:
-            name: selfsigned-issuer
-            kind: ClusterIssuer
+        secret:
+          secretName: "harbor-cert"
+          notarySecretName: "harbor-cert"
       ingress:
-        enabled: true
         hosts:
-          core: flux.local.external.local.gardener.cloud
-    externalURL: https://harbor.dms.com
-    existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
-    harborAdminPassword: "dms"
-    nginx:
+          core: hub.dms.in
+          notary: notary.dms.in
+        className: nginx
+    externalURL: https://hub.dms.in
+    internalTLS:
       enabled: true
-      tls:
-        enabled: false
+      certSource: "auto"
+    logLevel: info
+    #existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
+    harborAdminPassword: "demo"
+    portal:
+      replicas: 1
+    core:
+      replicas: 1
+    jobservice:
+      replicas: 1
+    registry:
+      replicas: 1
+    trivy:
+      replicas: 1
+    notary:
+      enabled: true
+      server:
+        replicas: 1
+      signer:
+        replicas: 1
+    database:
+      type: internal
+    redis:
+      type: internal
+    exporter:
+      replicas: 1
+    metrics:
+      enabled: true
+      serviceMonitor:
+        enabled: true
+    trace:
+      enabled: false
+    cache:
+      enabled: true

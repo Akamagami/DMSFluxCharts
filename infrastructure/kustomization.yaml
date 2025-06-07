@@ -1,9 +1,9 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 metadata:
-  name: gardener-demo
-  namespace: gardener-demo
+  name: infrastructure
+  namespace: infrastructure
 resources:
   # IMPORTANT: Ensure cert-manager resources are listed before apps that depend on them
-  - ../infrastructure
-  - ../apps/harbor
+  - ../infrastructure/cert-manager
+  - ../infrastructure/ingress
