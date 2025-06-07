@@ -4,4 +4,4 @@ metadata:
   name: ingress-infra
   namespace: ingress-nginx
 resources:
-  - ingress.ymal
+  - ingress.yaml
