@@ -11,7 +11,7 @@ spec:
     organizations:
       - Harbor
   dnsNames:
-    - flux.local.external.local.gardener.cloud # IMPORTANT: Replace with your exact Shoot cluster domain
+    - hub.dms.in # IMPORTANT: Replace with your exact Shoot cluster domain
   issuerRef:
     name: selfsigned-issuer
     kind: ClusterIssuer
