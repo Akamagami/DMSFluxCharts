@@ -8,22 +8,22 @@ data:
     expose:
       type: ClusterIP
       tls:
-        enabled: true         
-          certSource: secret    
-          secretName: harbor-cert
-          auto:                
-            commonName: flux.local.external.local.gardener.cloud 
-            issuerRef:
-              name: selfsigned-issuer 
-              kind: ClusterIssuer
+        enabled: true
+        certSource: secret
+        secretName: harbor-cert
+        auto:
+          commonName: flux.local.external.local.gardener.cloud
+          issuerRef:
+            name: selfsigned-issuer
+            kind: ClusterIssuer
       ingress:
         enabled: true
         hosts:
           core: flux.local.external.local.gardener.cloud
-    externalURL: https://harbor.dms.com 
+    externalURL: https://harbor.dms.com
     existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
     harborAdminPassword: "dms"
     nginx:
-      enabled: true 
+      enabled: true
       tls:
         enabled: false
