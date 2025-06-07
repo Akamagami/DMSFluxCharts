@@ -6,3 +6,4 @@ metadata:
 resources:
   # IMPORTANT: Ensure cert-manager resources are listed before apps that depend on them
   - ./cert-manager
+  - ./ingress
