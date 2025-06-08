@@ -4,15 +4,10 @@ metadata:
   name: harbor-cert # Name of the Certificate resource
   namespace: harbor # Must be in the same namespace as Harbor
 spec:
-  secretName: harbor-cert # This is the name of the Kubernetes Secret cert-manager will create
-  duration: 2160h # 90d
-  renewBefore: 360h # 15d
-  subject:
-    organizations:
-      - Harbor
+spec:
+  secretName: harbor-cert
   dnsNames:
-    - hub.dms.in # IMPORTANT: Replace with your exact Shoot cluster domain
+    - hub.dms.in
   issuerRef:
-    name: selfsigned-issuer
-    kind: ClusterIssuer
-    group: cert-manager.io
+    name: none
+    kind: Issuer
