@@ -6,4 +6,3 @@ metadata:
 resources:
   - ./crds # IMPORTANT: Apply CRDs Kustomization first!
   - cert-manager.yaml
-  - cert-manager-issuer.yaml
