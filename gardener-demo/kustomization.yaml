@@ -4,6 +4,5 @@ metadata:
   name: gardener-demo
   namespace: gardener-demo
 resources:
-  # IMPORTANT: Ensure cert-manager resources are listed before apps that depend on them
   - ../infrastructure
   - ../apps/harbor

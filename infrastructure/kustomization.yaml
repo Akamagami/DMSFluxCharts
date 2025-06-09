@@ -4,5 +4,5 @@ metadata:
   name: infrastructure
   namespace: infrastructure
 resources:
-  - ./ingress
   - ./metallb
+  - ./ingress
