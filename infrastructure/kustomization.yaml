@@ -4,6 +4,4 @@ metadata:
   name: infrastructure
   namespace: infrastructure
 resources:
-  # IMPORTANT: Only include ingress now
   - ./ingress
-  - ./metallb
