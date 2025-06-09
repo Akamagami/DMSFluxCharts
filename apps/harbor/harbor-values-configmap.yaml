@@ -8,22 +8,19 @@ data:
     expose:
       type: ingress
       tls:
-        enabled: true
-        certSource: secret
-        secret:
-          secretName: "harbor-cert"
-          notarySecretName: "harbor-cert"
+        enabled: false
+        certSource: ""
+        secret: {}
       ingress:
         hosts:
-          core: hub.dms.in
-          notary: notary.dms.in
+          core: ${HARBOR_HOST}
+          notary: notary.${HARBOR_HOST}
         className: nginx
-    externalURL: https://hub.dms.in
+    externalURL: http://${HARBOR_HOST}
     internalTLS:
-      enabled: true
-      certSource: "auto"
+      enabled: false
+      certSource: ""
     logLevel: info
-    #existingSecretAdminPasswordKey: HARBOR_ADMIN_PASSWORD
     harborAdminPassword: "demo"
     portal:
       replicas: 1

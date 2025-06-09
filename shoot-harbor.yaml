@@ -1,0 +1,84 @@
+apiVersion: core.gardener.cloud/v1beta1
+kind: Shoot
+metadata:
+  name: flux
+  namespace: garden-local
+  annotations:
+    shoot.gardener.cloud/infrastructure-cleanup-wait-period-seconds: "0"
+    shoot.gardener.cloud/cloud-config-execution-max-delay-seconds: "0"
+spec:
+  extensions:
+  - type: shoot-flux
+    providerConfig:
+      apiVersion: flux.extensions.gardener.cloud/v1alpha1
+      kind: FluxConfig
+      flux:
+        # renovate:flux-version
+        version: v2.6.1
+        registry: ghcr.io/fluxcd
+        namespace: flux-system
+      source:
+        template:
+          apiVersion: source.toolkit.fluxcd.io/v1
+          kind: GitRepository
+          spec:
+            ref:
+              branch: main
+            url: https://github.com/Akamagami/DMSFluxCharts.git
+        # secretResourceName: flux-ssh-secret
+      kustomization:
+        template:
+          apiVersion: kustomize.toolkit.fluxcd.io/v1
+          kind: Kustomization
+          spec:
+            path: gardener-demo/
+      # additionalSecretResources:
+      #   - name: shoot-vault-secret
+      #     targetName: vault
+
+  # Example field for Harbor host
+  harborHost: hub.dms.in
+
+  # resources:
+  # - name: flux-ssh-secret
+  #   resourceRef:
+  #     apiVersion: v1
+  #     kind: Secret
+  #     name: my-project-secret
+  # - name: shoot-vault-secret
+  #   resourceRef:
+  #     apiVersion: v1
+  #     kind: Secret
+  #     name: project-vault-secret
+
+  cloudProfileName: local
+  secretBindingName: local # dummy, doesn't contain any credentials
+  region: local
+  networking:
+    type: calico
+    # Add the 'nodes' CIDR block here.
+    # This range should not overlap with your Pods (10.3.0.0/16) or Services (10.4.0.0/16) CIDRs.
+    # A /16 is generally a safe choice for local setups.
+    nodes: 10.2.0.0/16
+    pods: 10.3.0.0/16
+    services: 10.4.0.0/16
+  provider:
+    type: local
+    workers:
+    - name: local
+      machine:
+        type: local
+      cri:
+        name: containerd
+      minimum: 1
+      maximum: 2
+      maxSurge: 1
+      maxUnavailable: 0
+  kubernetes:
+    kubelet:
+      seccompDefault: true
+      serializeImagePulls: false
+      registryPullQPS: 10
+      registryBurst: 20
+      protectKernelDefaults: true
+      streamingConnectionIdleTimeout: 5m
