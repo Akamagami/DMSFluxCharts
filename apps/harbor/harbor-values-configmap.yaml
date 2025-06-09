@@ -9,17 +9,14 @@ data:
       type: ingress
       tls:
         enabled: false
-        certSource: ""
-        secret: {}
       ingress:
         hosts:
           core: hub.dms.in
           notary: notary.hub.dms.in
         className: nginx
-    externalURL: http://hub.dms.in
+    externalURL: http://hub.dms.in:8080
     internalTLS:
       enabled: false
-      certSource: ""
     logLevel: info
     harborAdminPassword: "demo"
     portal:
