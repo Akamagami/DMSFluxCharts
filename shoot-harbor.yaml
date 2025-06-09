@@ -36,9 +36,6 @@ spec:
       #   - name: shoot-vault-secret
       #     targetName: vault
 
-  # Example field for Harbor host
-  harborHost: hub.dms.in
-
   # resources:
   # - name: flux-ssh-secret
   #   resourceRef:

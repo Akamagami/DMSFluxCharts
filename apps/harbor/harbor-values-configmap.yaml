@@ -13,10 +13,10 @@ data:
         secret: {}
       ingress:
         hosts:
-          core: ${HARBOR_HOST}
-          notary: notary.${HARBOR_HOST}
+          core: hub.dms.in
+          notary: notary.hub.dms.in
         className: nginx
-    externalURL: http://${HARBOR_HOST}
+    externalURL: hub.dms.in
     internalTLS:
       enabled: false
       certSource: ""
