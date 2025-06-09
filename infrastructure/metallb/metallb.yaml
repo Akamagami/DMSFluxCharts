@@ -24,7 +24,7 @@ metadata:
   annotations:
     metallb.universe.tf/address-pool: "default"
 data:
-  config: |
+  values.yaml: |
     address-pools:
     - name: default
       protocol: layer2
