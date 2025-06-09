@@ -13,7 +13,7 @@ spec:
   interval: 10m
   url: https://metallb.github.io/metallb
 ---
-apiVersion: helm.toolkit.fluxcd.io/v2beta2
+apiVersion: helm.toolkit.fluxcd.io/v2
 kind: HelmRelease
 metadata:
   name: metallb
@@ -29,21 +29,15 @@ spec:
         name: metallb
         namespace: flux-system
       interval: 1m
----
-apiVersion: metallb.io/v1beta1
-kind: L2Advertisement
-metadata:
-  name: l2-advertisement
-  namespace: metallb-system
-spec:
-  ipAddressPools:
-  - default-pool
----
-apiVersion: metallb.io/v1beta1
-kind: AddressPool
-metadata:
-  name: default-pool
-  namespace: metallb-system
-spec:
-  addresses:
-  - 172.18.255.200-172.18.255.250
+  values:
+    controller:
+      enabled: true 
+    speaker:
+      enabled: true 
+    ipAddressPools:
+      - name: default-pool
+        addresses:
+          - 172.18.255.200-172.18.255.250 
+    l2Advertisements:
+      - ipAddressPools:
+          - default-pool
