@@ -14,7 +14,7 @@ data:
           core: hub.dms.in
           notary: notary.hub.dms.in
         className: nginx
-    externalURL: http://hub.dms.in:8080
+    externalURL: http://hub.dms.in
     internalTLS:
       enabled: false
     logLevel: info
