@@ -34,7 +34,7 @@ spec:
   values:
     controller:
       service:
-        type: "LoadBalancer"
-      # No TLS configuration, HTTP only
+        type: "NodePort"
+        http: 30080
     admissionWebhooks:
       enabled: false
