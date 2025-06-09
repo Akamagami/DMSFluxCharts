@@ -40,7 +40,7 @@ spec:
   - default-pool
 ---
 apiVersion: metallb.io/v1beta1
-kind: IPAddressPool
+kind: AddressPool
 metadata:
   name: default-pool
   namespace: metallb-system
