@@ -13,24 +13,6 @@ spec:
   interval: 10m
   url: https://metallb.github.io/metallb
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: metallb-config
-  namespace: metallb-system
-  labels:
-    app: metallb
-    component: config
-  annotations:
-    metallb.universe.tf/address-pool: "default"
-data:
-  values.yaml: |
-    address-pools:
-    - name: default
-      protocol: layer2
-      addresses:
-      - 192.168.1.240-192.168.1.250
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta2
 kind: HelmRelease
 metadata:
@@ -47,13 +29,21 @@ spec:
         name: metallb
         namespace: flux-system
       interval: 1m
-  valuesFrom:
-    - kind: ConfigMap
-      name: metallb-config
 ---
 apiVersion: metallb.io/v1beta1
 kind: L2Advertisement
 metadata:
   name: l2-advertisement
   namespace: metallb-system
-spec: {}
+spec:
+  ipAddressPools:
+  - default-pool
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 192.168.1.240-192.168.1.250
