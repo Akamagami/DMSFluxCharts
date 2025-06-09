@@ -4,7 +4,6 @@ metadata:
   name: harbor-cert # Name of the Certificate resource
   namespace: harbor # Must be in the same namespace as Harbor
 spec:
-spec:
   secretName: harbor-cert
   dnsNames:
     - hub.dms.in
