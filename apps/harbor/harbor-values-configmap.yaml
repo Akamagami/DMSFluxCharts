@@ -14,7 +14,8 @@ data:
           core: hub.dms.in
           notary: notary.hub.dms.in
         className: nginx
-        sslRedirect: false
+        annotations:
+          nginx.ingress.kubernetes.io/ssl-redirect: "false"
     externalURL: http://hub.dms.in
     internalTLS:
       enabled: false
