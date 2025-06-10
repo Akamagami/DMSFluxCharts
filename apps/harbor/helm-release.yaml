@@ -9,7 +9,7 @@ spec:
   chart:
     spec:
       chart: harbor
-      version: "1.17.x" # Your desired Harbor version
+      version: "1.18.1" # Your desired Harbor version
       sourceRef:
         kind: HelmRepository
         name: harbor
