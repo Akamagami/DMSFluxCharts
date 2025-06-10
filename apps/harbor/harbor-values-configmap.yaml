@@ -16,7 +16,7 @@ data:
         className: nginx
         annotations:
           nginx.ingress.kubernetes.io/ssl-redirect: "false"
-    externalURL: http://hub.dms.in
+    externalURL: http://hub.dms.in:8080
     internalTLS:
       enabled: false
     logLevel: info
