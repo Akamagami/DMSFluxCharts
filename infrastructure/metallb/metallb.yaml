@@ -34,10 +34,21 @@ spec:
       enabled: true 
     speaker:
       enabled: true 
-    ipAddressPools:
-      - name: default-pool
-        addresses:
-          - 172.18.255.200-172.18.255.250 
-    l2Advertisements:
-      - ipAddressPools:
-          - default-pool
+---
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: default-pool
+  namespace: metallb-system
+spec:
+  addresses:
+  - 172.18.255.200-172.18.255.250 # Ensure this matches your KinD Docker network subnet
+---
+apiVersion: metallb.io/v1beta1
+kind: L2Advertisement
+metadata:
+  name: default-l2advertisement # You can choose a name here, "default-l2advertisement" is common
+  namespace: metallb-system
+spec:
+  ipAddressPools:
+  - default-pool
