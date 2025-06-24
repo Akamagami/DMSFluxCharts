@@ -4,5 +4,4 @@ metadata:
   name: gardener-demo
   namespace: gardener-demo
 resources:
-  - ../infrastructure
   - ../apps/harbor
