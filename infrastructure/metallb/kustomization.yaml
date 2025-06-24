@@ -5,5 +5,4 @@ metadata:
   namespace: metallb
 resources:
   # IMPORTANT: Apply CRDs Kustomization first
-  - ./crds # This is a directory containing CRDs for MetalLB
-  - metallb.yaml
+  - ingress
